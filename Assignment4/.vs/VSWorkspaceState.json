@@ -1,11 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\css",
-    "\\lib",
     "\\src",
-    "\\src\\templates"
+    "\\src\\shoppinglist",
+    "\\src\\shoppinglist\\templates"
   ],
-  "SelectedNode": "\\src\\routes.js",
+  "SelectedNode": "\\src\\shoppinglist\\menudata.service.js",
   "PreviewInSolutionExplorer": false
 }

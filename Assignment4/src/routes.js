@@ -16,32 +16,38 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
   // Home page
   .state('home', {
     url: '/',
-    template: <div>Hello</div>
-    //templateUrl: 'src/templates/home.template.html'
+    templateUrl: 'src/shoppinglist/templates/home.template.html'
   })
 
-  // Premade list page
-  //.state('categories', {
-  //  url: '/categories',
-  //  templateUrl: 'src/templates/categories.template.html',
-  //  controller: 'MainShoppingListController as mainList',
-  //  resolve: {
-  //    items: ['ShoppingListService', function (ShoppingListService) {
-  //      return ShoppingListService.getItems();
-  //    }]
-  //  }
-  //})
+  // Category list page
+  .state('categories', {
+    url: '/categories',
+    templateUrl: 'src/shoppinglist/templates/categories.template.html',
+      controller: 'MainShoppingListController as mainList',
+      resolve: {
+          categories: ['MenuDataService',
+              function (MenuDataService) {
+                  return MenuDataService.getAllCategories();
+              }]
+      }
+  })
 
-  //// Item detail
-  //.state('mainList.itemDetail', {
-  //  // url: '/item-detail/{itemId}',
-  //  templateUrl: 'src/shoppinglist/templates/item-detail.template.html',
-  //  controller: 'ItemDetailController as itemDetail',
-  //  params: {
-  //    itemId: null
-  //  }
-  //});
-
+  // Item list within a category page
+  .state('items', {
+      url: '/items/{categoryId}',
+      templateUrl: 'src/shoppinglist/templates/items.template.html',
+      controller: 'ItemsDetailController as itemsDetail',
+      resolve: {
+          items: ['$stateParams', 'MenuDataService',
+              function ($stateParams, MenuDataService) {
+                  return MenuDataService.getItemsForCategory($stateParams.categoryId);
+                      //.then(function (response) {
+                      //    response.data;
+                      //    console.log('Response data: ', response.data);
+                      //});
+              }]
+      }
+  });
 }
 
 })();
