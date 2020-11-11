@@ -1,0 +1,53 @@
+<div class="container">
+    <h2 class="text-center">Sign Up Form</h2>
+    <div class="text-center">
+        Please subscribe to our newsletter.<br /><br />
+    </div>
+    <div class="register-input-field">
+        <form name="signUp" novalidate>
+            <input type="text" name="firstName" placeholder="First Name"
+                   ng-model="signUpCtrl.user.firstName"
+                   required>
+            <span class="register-error" ng-if="signUp.firstName.$error.required && signUp.firstName.$touched">
+                Your name is required.
+            </span><br />
+            <input type="text" name="lastName" placeholder="Last Name"
+                   ng-model="signUpCtrl.user.lastName"
+                   required>
+            <span class="register-error" ng-if="signUp.lastName.$error.required && signUp.lastName.$touched">
+                Your last name is required.
+            </span><br />
+            <input type="email" name="email" placeholder="eMail"
+                   ng-model="signUpCtrl.user.email"
+                   required>
+            <span class="register-error" ng-if="signUp.email.$invalid && signUp.email.$touched">
+                Your email is required and must have name@domain format.
+            </span><br />
+            <input type="text" name="phone" placeholder="Phone/Mobile"
+                   ng-model="signUpCtrl.user.phone"
+                   required
+                   pattern="(\d{2})-(\d{2})-(\d{4})-(\d{4})">
+            <span class="register-error" ng-if="(signUp.phone.$error.required || signUp.phone.$error.pattern) && signUp.phone.$touched">
+                Your phone number is required amd must have country code (2), local area (2) and 8 digits. For example, 56-09-9999-9999.
+            </span><br />
+            <input type="text" name="favorite" placeholder="Favorite dish menu number"
+                   ng-model="signUpCtrl.user.favorite"
+                   required>
+            <span class="register-error" ng-if="(signUp.favorite.$error.required) && signUp.favorite.$touched">
+                You must enter a valid menu number.
+            </span><br /><br />
+            <button ng-disabled="signUp.$invalid"
+                    ng-click="signUpCtrl.dishInfo()">
+                Submit
+            </button>
+        </form>
+        <div class="register-result">
+            <span class="register-error" ng-if="signUpCtrl.displayError">
+                You must enter a valid menu number.
+            </span>
+            <span ng-if="signUpCtrl.display">({{signUpCtrl.dishShortName}}) {{signUpCtrl.dishName}}</span><br />
+            <span ng-if="signUpCtrl.display">{{signUpCtrl.dishDescription}}</span>
+        </div>
+    </div>
+
+</div>

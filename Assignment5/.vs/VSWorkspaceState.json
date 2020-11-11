@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\css",
+    "\\src",
+    "\\src\\common",
+    "\\src\\public",
+    "\\src\\public\\menu",
+    "\\src\\public\\menu-items",
+    "\\src\\public\\registered-info",
+    "\\src\\public\\sign-up"
+  ],
+  "SelectedNode": "\\src\\common\\menu.service.js",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,0 +1,20 @@
+<div class="container">
+    <h2 class="text-center">Registered Information</h2>
+    <div class="text-center">
+        Your registered information is the following.
+    </div>
+    <div class="registered-result" ng-if="RegisteredCtrl.displayResult">
+        <span>Full Name: {{RegisteredCtrl.user.firstName}} {{RegisteredCtrl.user.lastName}}</span><br />
+        <span>eMail: {{RegisteredCtrl.user.email}}</span><br />
+        <span>Phone: {{RegisteredCtrl.user.phone}}</span><br />
+        <div>
+            Favorite Menu Dish:
+            <img class="img-responsive" width="250" height="150" ng-src="{{RegisteredCtrl.basePath}}/images/{{RegisteredCtrl.user.favorite}}.jpg" alt="{{RegisteredCtrl.user.dishName}}">
+            <span>({{RegisteredCtrl.user.favorite}}) {{RegisteredCtrl.user.dishName}}: {{RegisteredCtrl.user.dishDescription}}</span><br />
+        </div>
+    </div>
+    <div class="registered-error" ng-if="RegisteredCtrl.displayError">
+        <span>Not Signed Up Yet.</span>
+        <a ui-sref="public.signup">Sign up Now!</a>
+    </div>
+</div>
